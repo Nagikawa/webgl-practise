@@ -56,13 +56,16 @@ export const WobblyLiquidMaterial = shaderMaterial(
 extend({ WobblyLiquidMaterial });
 
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
-      wobbyLiquidMaterial: THREE.Object3D & {
-        uTime: number;
-        uWobble: THREE.Vector2;
-        uColorTop: THREE.Color;
-        uColorBottom: THREE.Color;
+      wobblyLiquidMaterial: {
+        ref?: any;
+        key?: React.Key;
+        uTime?: number;
+        uWobble?: THREE.Vector2 | [number, number];
+        uColorTop?: THREE.Color | string;
+        uColorBottom?: THREE.Color | string;
+        attach?: string;
       };
     }
   }
