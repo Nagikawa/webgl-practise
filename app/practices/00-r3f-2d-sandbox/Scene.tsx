@@ -4,6 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 import { WebGL2DCanvas } from "@/app/components/webgl/WebGLCanvas";
+import { useWebGLTimer } from "@/app/components/webgl/useWebGLTimer";
 
 const vertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -41,15 +42,16 @@ const fragmentShader = /* glsl */ `
 function ShaderPlane() {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const pointer = useRef(new THREE.Vector2());
-  const elapsed = useRef(0);
+  const timerRef = useWebGLTimer();
 
-  useFrame((state, delta) => {
-    if (!materialRef.current) return;
+  useFrame((state) => {
+    if (!materialRef.current || !timerRef.current) return;
 
-    elapsed.current += delta;
+    timerRef.current.update();
+
     pointer.current.lerp(state.pointer, 0.08);
 
-    materialRef.current.uniforms.uTime.value = elapsed.current;
+    materialRef.current.uniforms.uTime.value = timerRef.current.getElapsed();
     materialRef.current.uniforms.uPointer.value.copy(pointer.current);
   });
 
