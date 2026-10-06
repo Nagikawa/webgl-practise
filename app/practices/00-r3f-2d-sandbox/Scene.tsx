@@ -41,11 +41,15 @@ const fragmentShader = /* glsl */ `
 function ShaderPlane() {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const pointer = useRef(new THREE.Vector2());
+  const elapsed = useRef(0);
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (!materialRef.current) return;
+
+    elapsed.current += delta;
     pointer.current.lerp(state.pointer, 0.08);
-    materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
+
+    materialRef.current.uniforms.uTime.value = elapsed.current;
     materialRef.current.uniforms.uPointer.value.copy(pointer.current);
   });
 
