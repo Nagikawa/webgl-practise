@@ -1,14 +1,22 @@
 'use client';
 
-import { Canvas, type CameraProps } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import type { ReactNode } from "react";
 import * as THREE from "three";
 
+type CameraOptions = {
+  position?: [number, number, number];
+  fov?: number;
+  zoom?: number;
+  near?: number;
+  far?: number;
+};
+
 type WebGLCanvasProps = {
   children: ReactNode;
   mode?: "2d" | "3d";
-  camera?: CameraProps;
+  camera?: CameraOptions;
   orbit?: boolean;
   dpr?: [number, number];
   className?: string;
@@ -16,7 +24,14 @@ type WebGLCanvasProps = {
 
 /**
  * Small shared R3F foundation.
- * Practice-specific shaders, models and effects stay local to the exercise.
+ *
+ * Keep this component intentionally boring:
+ * - shared canvas/renderer defaults
+ * - 2D/3D camera mode
+ * - optional orbit controls
+ *
+ * Practice-specific shaders, loaders, environments and postprocessing stay
+ * inside the exercise that needs them.
  */
 export function WebGLCanvas({
   children,
@@ -26,15 +41,20 @@ export function WebGLCanvas({
   dpr = [1, 2],
   className = "h-full w-full",
 }: WebGLCanvasProps) {
-  const defaultCamera: CameraProps =
+  const defaultCamera: CameraOptions =
     mode === "2d"
       ? { position: [0, 0, 5], zoom: 1 }
       : { position: [0, 0, 5.5], fov: 45 };
 
+  const cameraOptions: CameraOptions = {
+    ...defaultCamera,
+    ...camera,
+  };
+
   return (
     <Canvas
       orthographic={mode === "2d"}
-      camera={{ ...defaultCamera, ...camera }}
+      camera={cameraOptions}
       dpr={dpr}
       gl={{
         antialias: true,
