@@ -27,6 +27,7 @@ export function PracticeNav() {
                   <Link
                     key={practice.slug}
                     href={`/practices/${practice.slug}`}
+                    prefetch={false}
                     className="group flex gap-3 rounded-lg px-3 py-3 transition hover:bg-white/7"
                   >
                     <span className="font-mono text-[10px] text-white/25">
@@ -61,6 +62,7 @@ export function MobilePracticeNav() {
         <Link
           key={practice.slug}
           href={`/practices/${practice.slug}`}
+          prefetch={false}
           className="shrink-0 rounded-md border border-white/10 px-3 py-2 text-xs text-white/70"
         >
           {practice.title}

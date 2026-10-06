@@ -1,5 +1,3 @@
-'use client';
-
 import Link from "next/link";
 import { practices } from "@/app/data/practices";
 
@@ -21,6 +19,7 @@ export default function HomePage() {
             <Link
               key={practice.slug}
               href={`/practices/${practice.slug}`}
+              prefetch={false}
               className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06]"
             >
               <div className="flex items-center justify-between gap-4">
