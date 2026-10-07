@@ -3,7 +3,7 @@ import { practices } from "@/app/data/practices";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-white lg:pl-72">
+    <main className="min-h-screen bg-neutral-950 text-white">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-20 lg:px-16">
         <div className="max-w-3xl">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-white/35">WebGL Laboratory</p>
@@ -20,7 +20,7 @@ export default function HomePage() {
               key={practice.slug}
               href={`/practices/${practice.slug}`}
               prefetch={false}
-              className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06]"
+              className="group rounded-2xl border border-white/10 bg-white/3 p-5 transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/6"
             >
               <div className="flex items-center justify-between gap-4">
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/30">
