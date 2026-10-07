@@ -27,4 +27,11 @@ export const practices: PracticeMeta[] = [
     kind: "3d",
     group: "3D",
   },
+  {
+    slug: "02-piet-mondrian",
+    title: "Piet Mondrian",
+    description: "Rectangle masks + asymmetric grid + square 2D composition.",
+    kind: "2d",
+    group: "2D",
+  },
 ];
