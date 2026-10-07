@@ -18,7 +18,7 @@ export function PracticeNav() {
         onClick={() => setOpen((value) => !value)}
         className="cursor-pointer absolute left-4 top-4 z-9999 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white/80 shadow-2xl shadow-black/40 backdrop-blur-xl transition hover:border-white/30 hover:bg-black/75 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
       >
-        <span className="cursor-pointer sr-only">{open ? "Close" : "Open"} navigation</span>
+        <span className="sr-only">{open ? "Close" : "Open"} navigation</span>
         <span className="flex w-4 flex-col gap-1.5">
           <span className={`block h-px w-full bg-current transition ${open ? "translate-y-2 rotate-45" : ""}`} />
           <span className={`block h-px w-full bg-current transition ${open ? "opacity-0" : "opacity-100"}`} />
