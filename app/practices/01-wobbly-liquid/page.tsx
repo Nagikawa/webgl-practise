@@ -11,7 +11,7 @@ const Scene = dynamic(() => import("./Scene"), {
 
 export default function PracticePage() {
   return (
-    <main className="relative h-[100dvh] w-full overflow-hidden bg-neutral-950">
+    <main className="relative h-dvh w-full overflow-hidden bg-neutral-950">
       <Suspense fallback={null}>
         <Scene />
       </Suspense>

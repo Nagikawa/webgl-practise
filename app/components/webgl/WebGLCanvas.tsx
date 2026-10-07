@@ -32,7 +32,7 @@ export function WebGLCanvas({ children, mode = "3d", camera, orbit = false, dpr 
       camera={{ ...defaultCamera, ...camera }}
       dpr={dpr}
       gl={{ antialias: true, alpha: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}
-      className="absolute inset-0 block !h-full !w-full"
+      className="absolute inset-0 block h-full! w-full!"
       style={{ position: "absolute", inset: 0, width: "100vw", height: "100dvh" }}
     >
       {children}
