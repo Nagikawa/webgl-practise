@@ -19,50 +19,24 @@ type WebGLCanvasProps = {
   camera?: CameraOptions;
   orbit?: boolean;
   dpr?: [number, number];
-  className?: string;
 };
 
-/**
- * Small shared R3F foundation.
- *
- * The Canvas is always positioned against the viewport-sized practice root.
- * This prevents the native canvas default size from becoming the layout size.
- */
-export function WebGLCanvas({
-  children,
-  mode = "3d",
-  camera,
-  orbit = false,
-  dpr = [1, 2],
-  className = "absolute inset-0 h-full w-full",
-}: WebGLCanvasProps) {
-  const defaultCamera: CameraOptions =
-    mode === "2d"
-      ? { position: [0, 0, 5], zoom: 1 }
-      : { position: [0, 0, 5.5], fov: 45 };
-
-  const cameraOptions: CameraOptions = {
-    ...defaultCamera,
-    ...camera,
-  };
+export function WebGLCanvas({ children, mode = "3d", camera, orbit = false, dpr = [1, 2] }: WebGLCanvasProps) {
+  const defaultCamera: CameraOptions = mode === "2d"
+    ? { position: [0, 0, 5], zoom: 1 }
+    : { position: [0, 0, 5.5], fov: 45 };
 
   return (
     <Canvas
       orthographic={mode === "2d"}
-      camera={cameraOptions}
+      camera={{ ...defaultCamera, ...camera }}
       dpr={dpr}
-      gl={{
-        antialias: true,
-        alpha: true,
-        toneMapping: THREE.ACESFilmicToneMapping,
-        toneMappingExposure: 1.2,
-      }}
-      className={className}
+      gl={{ antialias: true, alpha: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}
+      className="absolute inset-0 block !h-full !w-full"
+      style={{ position: "absolute", inset: 0, width: "100vw", height: "100dvh" }}
     >
       {children}
-      {orbit && mode === "3d" ? (
-        <OrbitControls enableZoom={false} enablePan={false} dampingFactor={0.05} />
-      ) : null}
+      {orbit && mode === "3d" ? <OrbitControls enableZoom={false} enablePan={false} dampingFactor={0.05} /> : null}
     </Canvas>
   );
 }
