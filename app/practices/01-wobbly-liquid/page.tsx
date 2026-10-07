@@ -11,18 +11,18 @@ const Scene = dynamic(() => import("./Scene"), {
 
 export default function PracticePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-neutral-950 lg:pl-72">
+    <main className="relative h-[100dvh] w-full overflow-hidden bg-neutral-950">
       <Suspense fallback={null}>
         <Scene />
       </Suspense>
 
       <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between p-6 lg:p-12">
-        <header className="flex items-center justify-between gap-6">
+        <header className="flex items-center justify-between gap-6 pl-14">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">Practice 01</p>
             <h1 className="mt-3 text-2xl font-bold tracking-widest text-white lg:text-3xl">PITANIUM</h1>
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
+          <span className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-white/35 sm:block">
             Creative Technologist / GLSL Demo
           </span>
         </header>

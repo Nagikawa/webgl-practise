@@ -11,13 +11,13 @@ const Scene = dynamic(() => import("./Scene"), {
 
 export default function PracticePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-neutral-950 text-white lg:pl-72">
+    <main className="relative h-[100dvh] w-full overflow-hidden bg-neutral-950 text-white">
       <Suspense fallback={null}>
         <Scene />
       </Suspense>
 
       <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between p-6 lg:p-12">
-        <div>
+        <div className="pl-14">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">Practice 00</p>
           <h1 className="mt-3 text-3xl font-light tracking-tight text-white">R3F 2D Shader Sandbox</h1>
         </div>

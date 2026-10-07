@@ -25,13 +25,8 @@ type WebGLCanvasProps = {
 /**
  * Small shared R3F foundation.
  *
- * Keep this component intentionally boring:
- * - shared canvas/renderer defaults
- * - 2D/3D camera mode
- * - optional orbit controls
- *
- * Practice-specific shaders, loaders, environments and postprocessing stay
- * inside the exercise that needs them.
+ * The Canvas is always positioned against the viewport-sized practice root.
+ * This prevents the native canvas default size from becoming the layout size.
  */
 export function WebGLCanvas({
   children,
@@ -39,7 +34,7 @@ export function WebGLCanvas({
   camera,
   orbit = false,
   dpr = [1, 2],
-  className = "h-full w-full",
+  className = "absolute inset-0 h-full w-full",
 }: WebGLCanvasProps) {
   const defaultCamera: CameraOptions =
     mode === "2d"
